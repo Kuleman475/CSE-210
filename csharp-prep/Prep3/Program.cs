@@ -4,9 +4,10 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("What is your magic number?");
-        string num = Console.ReadLine();
-        int magicNumber = Convert.ToInt32(num);
+        // Console.WriteLine("What is your magic number?");
+        // string num = Console.ReadLine();
+        Random num = new Random();
+        int magicNumber = num.Next(1, 101);
 
 
         Console.WriteLine("What is your guess? ");
@@ -25,6 +26,5 @@ class Program
         guess = Convert.ToInt32(g);
         }
         Console.WriteLine("You guessed it! ");
-
     }
 }

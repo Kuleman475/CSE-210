@@ -8,28 +8,32 @@ class Program
         Console.WriteLine("What is your grade percentage? ");
         string grade = Console.ReadLine();
         int gradePercent = Convert.ToInt32(grade);
+        string Letter;
+        string passFail;
 
         if (gradePercent >= 90){
-            Console.WriteLine("A");
-            Console.WriteLine("PASSED");
+            Letter = "A";
         }
 
         else if (gradePercent >= 80){
-            Console.WriteLine("B");
-            Console.WriteLine("PASSED");
+            Letter = "B";
         }
         else if (gradePercent >= 70){
-            Console.WriteLine("C");
-            Console.WriteLine("PASSED");
+            Letter = "C";
         }
         else if (gradePercent >= 60){
-            Console.WriteLine("D");
-            Console.WriteLine("FAIL");
+            Letter = "D";
         }
         else {
-            Console.WriteLine("F");
-            Console.WriteLine("FAIL");
+            Letter = "F";
         }
-
+        if (gradePercent < 70){
+            passFail = "Sorry you have failed. better luck next time.";
+        }
+        else {
+            passFail = "Congratulations you passed!";
+        }
+        Console.WriteLine($"{Letter}");
+        Console.WriteLine($"{passFail}");
     }
 }

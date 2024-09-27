@@ -28,19 +28,16 @@ class Program
 
         Entry entry1 = new Entry();    
         entry1._date = DateTime.Now.ToString("MM/dd/yyyy");
-        entry1._promptText = "What temperature is it outside? ";
-        entry1._entryText = "SSSSSSSSSS";
+        entry1._promptText = "What temperature is it inside? ";
+        entry1._entryText = "it is a cool 78 degrees";
         
         Entry entry2 = new Entry();
         entry2._date = DateTime.Now.ToString("MM/dd/yyyy");
-        entry2._promptText = "What temperature is it outside? ";
-        entry2._entryText = "PPPPPPPPPPPPPP";
-
-        
+        entry2._promptText = "What temperature is the outside? ";
+        entry2._entryText = "it is really hot outside";
+                
         myJournal._entries.Add(entry1);
         myJournal._entries.Add(entry2);
-        
-
 
             if (userChoice == 1)
                 {        
@@ -53,30 +50,26 @@ class Program
                 }
             
              else if (userChoice == 2) {
-                // Journal myJournal = new Journal();
-                
-                Console.WriteLine(myJournal._entries[2]._entryText);
-                Console.WriteLine("DISPLAY");
-                foreach (Entry enty in myJournal._entries){
-                    enty.DisplayEntry();   
-                }
+                myJournal.DisplayAll();
                 displayMessage();
             }
             else if (userChoice == 3) {
                 Console.WriteLine("SAVE");
+                myJournal.SaveFile();
+                displayMessage();
             }
             else if (userChoice == 4) {
                 Console.WriteLine("LOAD");
+                myJournal.LoadFile();
+                displayMessage();
             }
             else if (userChoice == 5) {
                 Console.WriteLine("GOODBYE!");
             }
             else{
                 displayMessage();
-            }
-            
+            }       
     }
-
         static string RandomPrompt(List<string> prompts) {
             Random random = new Random();
             int index = random.Next(prompts.Count);

@@ -1,9 +1,46 @@
 using System;
 
-class Program
+namespace DailyScripture
 {
-    static void Main(string[] args)
+    class Program
     {
-        Console.WriteLine("Hello Develop03 World!");
+        
+        static void Main()
+        {
+            Scripture scripture = new Scripture("3 Nephi ", 5, 13, "Behold, I am a disciple of Jesus Christ, the Son of God. I have been called of him to declare his word among his people, that they might have everlasting life. ");
+            Console.Clear();
+            scripture.Display(); 
+            Console.WriteLine("\nPress Enter to continue or type 'quit' to exit.");
+
+            while (true)
+            {
+                string input = Console.ReadLine();
+                if (input.ToLower() == "quit")
+                    break;
+
+                if (!scripture.HideRandomWord())
+                {
+                    Console.WriteLine("\nYou got this, you memorized the scripture!!");
+                    break;
+                }
+
+                Console.Clear();
+                scripture.Display();
+                Console.WriteLine("\nPress Enter to continue or type 'quit' to exit.");
+            }
+        }
     }
 }
+
+//using System;
+
+// class Program
+// {
+//     static void Main(string[] args)
+//     {
+//         Scripture scripts = new Scripture();
+        
+//     // string text = "For God so loved the world, that he gave his only begotten Son";
+//     scripts.Scriptures("John", 3, 16, "For God so loved the world, that he gave his only begotten Son");
+//     }
+// }

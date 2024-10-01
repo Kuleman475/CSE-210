@@ -1,58 +1,25 @@
 using System;
 
-namespace DailyScripture
-{
-        class Reference
-    {
-        private string _book;
-        private int _chapter;
-        private int _startVerse;
-        private int _endVerse;
+ class Reference {
+    private string _book;
+    private int _chapter;
+    private int _verse;
+    private int _endVerse;
 
-        public Reference(string book, int chapter, int verse)
-        {
-            this._book = book;
-            this._chapter = chapter;
-            this._startVerse = verse;
-            this._endVerse = verse;
-        }
-
-        public Reference(string book, int chapter, int startVerse, int endVerse)
-        {
-            this._book = book;
-            this._chapter = chapter;
-            this._startVerse = startVerse;
-            this._endVerse = endVerse;
-        }
-
-        public override string ToString()
-        {
-            if (_startVerse == _endVerse)
-                return $"{_book} {_chapter}:{_startVerse}";
-            else
-                return $"{_book} {_chapter}:{_startVerse}-{_endVerse}";
-        }
+    public Reference(string book, int chapter, int verse){
+        _book = book;
+        _chapter = chapter;
+        _verse = verse;
+    }
+    public Reference(string book, int chapter, int startVerse, int endVerse){
+        _book = book;
+        _chapter = chapter;
+        _verse = startVerse;
+        _endVerse = endVerse;
+    }
+        public string GetDisplayText(){
+            
+            return $"{_book} {_chapter} {_verse}: ";
+        
     }
 }
-
-
-// using System;
-
-// public class Reference {
-//     string _book = "John";
-//     int _chapter = 3;
-//     int _verse = 16;
-//     int _endVerse = 16;
-
-//     public Reference(string book, int chapter, int verse){
-//         book = _book;
-//         chapter = _chapter;
-//         verse = _verse;
-//     }
-//     public Reference(string book, int chapter, int startVerse, int endVerse){
-//         book = _book;
-//         chapter = _chapter;
-//         startVerse = _verse;
-//         endVerse = _endVerse;
-//     }
-// }

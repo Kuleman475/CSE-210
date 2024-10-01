@@ -1,46 +1,13 @@
 using System;
 
-namespace DailyScripture
-{
-    class Program
-    {
-        
-        static void Main()
-        {
-            Scripture scripture = new Scripture("3 Nephi ", 5, 13, "Behold, I am a disciple of Jesus Christ, the Son of God. I have been called of him to declare his word among his people, that they might have everlasting life. ");
-            Console.Clear();
-            scripture.Display(); 
-            Console.WriteLine("\nPress Enter to continue or type 'quit' to exit.");
-
-            while (true)
-            {
-                string input = Console.ReadLine();
-                if (input.ToLower() == "quit")
-                    break;
-
-                if (!scripture.HideRandomWord())
-                {
-                    Console.WriteLine("\nYou got this, you memorized the scripture!!");
-                    break;
-                }
-
-                Console.Clear();
-                scripture.Display();
-                Console.WriteLine("\nPress Enter to continue or type 'quit' to exit.");
-            }
-        }
-    }
-}
-
-//using System;
-
-// class Program
-// {
-//     static void Main(string[] args)
-//     {
-//         Scripture scripts = new Scripture();
-        
-//     // string text = "For God so loved the world, that he gave his only begotten Son";
-//     scripts.Scriptures("John", 3, 16, "For God so loved the world, that he gave his only begotten Son");
-//     }
-// }
+    string text = "And now it came to pass that all this was done in Mormon, yea, by the waters of Mormon, in the forest \r\n"
+     + "that was near the waters of Mormon; yea, the place of Mormon, the waters of Mormon, the forest of Mormon, how beautiful \r\n"
+     + "are they to the eyes of them who there came to the knowledge of their Redeemer; yea, and how blessed are they, for \r\n"
+     + "they shall sing to his praise forever. ";
+    Word word = new Word(text);
+    Reference reference = new Reference("Mosiah ", 18, 30);
+    Scripture scripture = new Scripture("Mosiah ", 18, 30, text);
+    // Console.Write(scripture.GetDisplayText());
+    // Console.Write(reference.GetDisplayText());
+    // Console.Write(word.GetDisplayText());
+    scripture.HideRandomWords(5, text);

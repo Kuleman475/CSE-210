@@ -12,13 +12,18 @@ class Product {
         _price = price;
         _quantity = quantity;
     }
-    public void Total(){
+    public double Total(){
         double total = _price * _quantity;
-        Console.WriteLine($"Total cost = ${total}");
+        return total;
     }
+
+        public void Display(){
+            Console.WriteLine($"Product: {_nameOfProduct} ID: {_productID}");
+        }
+    }
+
 // Contains the name, product id, price, and quantity of each product.
 // The total cost of this product is computed by multiplying the price per unit and the quantity. 
 // (If the price per unit was $3 and they bought 5 of them, the product total cost would be $15.)
 
 
-}

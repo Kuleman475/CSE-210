@@ -13,8 +13,8 @@ class Address {
         _country = country;
         
     }
-    public void AddressString(){
-        Console.WriteLine($"Address {_street}, {_city}, {_state}, {_country}");
+    public string AddressString(){
+        return $"{_street}, {_city}, {_state}, {_country}";
     }
     public bool IsUSA(){
         if (_country == "USA"){

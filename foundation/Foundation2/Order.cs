@@ -7,10 +7,46 @@ class Order {
     public Order(Customer customer){
         _customer = customer;
     }
-    // public void ShippingLabel(){
-    //     if ()
-    //     Console.WriteLine(_customer + "POPCORN");
-    // }
+    public void AddProduct(Product product){
+        _customerProducts.Add(product);
+    }
+    public double Subtotal(){
+        double subtotal = 0;
+        foreach (Product product in _customerProducts)
+        {
+            subtotal += product.Total();
+        }
+        return subtotal;
+    }
+    public double ShippingCost(Address address){
+        if(address.IsUSA() == true){
+            return 5;
+        }
+        else {
+            return 35;
+        }
+    }
+    public double OrderTotal(double subtotal, double shippingTotal){
+        double orderTotal = subtotal + shippingTotal;
+        Console.WriteLine($"Order Total: ${orderTotal}");
+        return orderTotal;
+    }
+    // Shipping label name and address of the customer
+    public void ShippingLabel(Customer customer){
+        Console.WriteLine("Shipping Label");
+        customer.DisplayCustomer();
+    }
+
+    //  packing label should list the name and product id of each product in the order.
+    public void PackingLabel(){
+        Console.WriteLine("Packing Label");
+        foreach (Product product in _customerProducts)
+        {
+            product.Display();
+        }
+        
+
+    }
 
 
 }

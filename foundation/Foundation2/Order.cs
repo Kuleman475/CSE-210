@@ -2,15 +2,15 @@ using System;
 
 class Order {
     private List<Product> _customerProducts = new List<Product>();
-    private string _customer {get; set;}
+    private Customer _customer {get; set;}
 
-    public Order(){
-
+    public Order(Customer customer){
+        _customer = customer;
     }
-    public void ShippingLabel(){
-        if ()
-        Console.WriteLine(_customer + "POPCORN");
-    }
+    // public void ShippingLabel(){
+    //     if ()
+    //     Console.WriteLine(_customer + "POPCORN");
+    // }
 
 
 }

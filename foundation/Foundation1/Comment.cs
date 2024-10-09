@@ -8,4 +8,7 @@ public class Comment{
     public Comment(){
         
     }
+    public void DisplayComment(){
+        Console.WriteLine($"  -{_commentor}: {_commentText}");
+    }
 }

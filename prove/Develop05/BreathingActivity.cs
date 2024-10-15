@@ -4,7 +4,6 @@ public class BreathingActivity : Activity {
     : base(name, description, duration)
     {
         DisplayStartingMessage();
-        Console.WriteLine(duration + ":)");
     }
 
     public void Run(){

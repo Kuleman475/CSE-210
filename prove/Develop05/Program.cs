@@ -14,23 +14,26 @@ class Program
         switch(UserChoice) 
         {
         case "1":
-            string description = "This activity will help you relax" +
+            string description1 = "This activity will help you relax" +
         "by walking your through breathing in and out slowly."
         + "Clear your mind and focus on your breathing.";
-            Activity breathe = new Activity("Breathing Activity", description, 20);
-            BreathingActivity bactivity = new BreathingActivity("Breathing Activity", description, 20);
+            Activity breathe = new Activity("Breathing Activity", description1, 20);
+            BreathingActivity bactivity = new BreathingActivity("Breathing Activity", description1, 20);
             bactivity.Run();
             break;
         case "2":
-        string description = "This activity will help you reflect on times"
+        // r.GetRandomPrompt();
+        // r.GetRandomQuestion();
+        string description2 = "This activity will help you reflect on times"
         + " in your life when you have shown strength and resilience."
         + " This will help you recognize the power you have and how you can "
         + "use it in other aspects of your life.";
-            Activity reflecting = new Activity("Reflecting Activity", description, 20);
+            Activity reflecting = new Activity("Reflecting Activity", description2, 20);
+            ReflectingActivity r = new ReflectingActivity("Reflecting Activity", description2, 20, GetRandomPrompt(), GetRandomQuestion());
             break;
         case "3":
-        string description = "This activity will help you reflect on the good things in your life"
-        + " by having you list as many things as you can in a certain area.";
+        // string description = "This activity will help you reflect on the good things in your life"
+        // + " by having you list as many things as you can in a certain area.";
             // Activity listing = new Activity("Listing Activity");
             break;
         case "4":

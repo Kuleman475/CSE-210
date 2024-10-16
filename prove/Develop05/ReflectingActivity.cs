@@ -6,12 +6,36 @@ public class ReflectingActivity : Activity {
     private List<string> _questions;
 
     public ReflectingActivity(string name, string description, 
-    int duration, List<string> prompt, List<string> question) 
+    int duration, string prompt, string question) 
     : base(name, description, duration)
     {
         DisplayStartingMessage();
+        Run();
+        DisplayEndingMessage();
     }
     public void Run(){
+        DisplayPrompt();
+        Console.WriteLine("Press Enter once you have thought of something.");
+        Console.ReadLine();
+        Console.WriteLine("Now ponder each of the following as they relate to the experience.");
+        Console.WriteLine($"We will beging in ... ");
+        for (int i = 5; i >= 0; i--)
+        {
+           Thread.Sleep(1000);
+           int currentLineCursor = Console.CursorTop;
+           Console.SetCursorPosition(0, Console.CursorTop);
+           Console.Write(new string(' ', Console.WindowWidth)); 
+           Console.SetCursorPosition(0, currentLineCursor);
+           Console.Write(i);
+        }
+        Console.Clear();
+        for (int x = 0; x < 3; x++)
+        {
+           DisplayQuestion();
+           Thread.Sleep(10000);
+        }
+        Console.WriteLine("Congratulations! YOu have completed the reflecting activity.");
+
 
     }
     public string GetRandomPrompt(){
@@ -44,9 +68,11 @@ public class ReflectingActivity : Activity {
         return _questions[randomQuestion];
     }
     public void DisplayPrompt(){
-
+        string prompt = GetRandomPrompt();
+        Console.WriteLine(prompt + "  DISPLAUPROMT");
     }
     public void DisplayQuestion(){
-
+        string question = GetRandomQuestion();
+        Console.WriteLine($"> {question}");
     }
 }

@@ -4,33 +4,37 @@ public class ListingActivity : Activity {
 
     public ListingActivity(string name, string description, 
     int duration, int count, string prompt)
-    : base(name, description, duration)
+    : base(name, description)
     {
         DisplayStartingMessage();
-        Run();
+        int seconds = GetDuration();
+        SetDuration(seconds);
+        Run(seconds);
         DisplayEndingMessage();
     }
-    public void Run(){
+    public void Run(int seconds){
         _count = 0;
         Console.Clear();
         Console.WriteLine("Welcome to Listing Activity!");
         GetRandomPrompt();
-        // for(int i = 0; i <= 10; i++){
-        //   GetListFromUser();  
-        // }
+        while(seconds > time) {
+            
+
+
         
         Console.WriteLine($" P{_count}");
 
         // return _count;
     }
     public string GetRandomPrompt(){
-        _prompts = new List<string>();
-
-        _prompts.Add("Who are people that you appreciate?");
-        _prompts.Add("What are personal strengths of yours?");
-        _prompts.Add("Who are people that you have helped this week?");
-        _prompts.Add("When have you felt the Holy Ghost this month?");
-        _prompts.Add("Who are some of your personal heroes?");
+        _prompts =
+        [
+            "Who are people that you appreciate?",
+            "What are personal strengths of yours?",
+            "Who are people that you have helped this week?",
+            "When have you felt the Holy Ghost this month?",
+            "Who are some of your personal heroes?",
+        ];
 
         Random random = new Random();
         int randPrompt = random.Next(_prompts.Count);
@@ -38,8 +42,12 @@ public class ListingActivity : Activity {
     }
     public List<string> GetListFromUser(){
         List<string> userInput = new List<string>();
-        string userList = Console.ReadLine();
-        userInput.Add(userList);
+        
+            Console.Write("> ");
+            string userList = Console.ReadLine();
+            userInput.Add(userList);
+
+        
         return userInput;
     }
 }

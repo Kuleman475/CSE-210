@@ -1,3 +1,5 @@
+using System.Reflection.Metadata;
+
 public class BreathingActivity : Activity {
 
     public BreathingActivity(string name, string description) 
@@ -17,15 +19,15 @@ public class BreathingActivity : Activity {
             Console.Clear();  
             int time = 0;
         while(seconds > time) {
-        
+        Console.BackgroundColor = ConsoleColor.DarkBlue;
         Console.Write("\nBreathe in ... ");
         for (int x = 5; x >= 0; x--){
-             Console.Write(x);
+            Console.Write(x);
             Thread.Sleep(1000);
             Console.Write("\b");
             time += 1;
         }
-
+        Console.BackgroundColor = ConsoleColor.Yellow;
         Console.Write("\n\nNow breathe out ... "); 
         for (int x = 5; x >= 0; x--){
             Console.Write(x);
@@ -33,7 +35,9 @@ public class BreathingActivity : Activity {
             Console.Write("\b");
             time +=1;
         }
+        Console.Write("\n");
     }
+    Console.BackgroundColor = ConsoleColor.Black;  
     Console.WriteLine("\n\nGreat Job!\n");
     }
 }

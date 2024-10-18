@@ -6,29 +6,34 @@ public class BreathingActivity : Activity {
         DisplayStartingMessage();
         int seconds = GetDuration();
         SetDuration(seconds);
-        Run(seconds);
+        Run(seconds); 
         DisplayEndingMessage();
     }
 
     public void Run(int seconds){
             Console.Clear();
-            Console.WriteLine(seconds);
             Console.WriteLine("Get Ready...");
-            Thread.Sleep(3000);        
+            ShowSpinner();   
+            Console.Clear();  
             int time = 0;
         while(seconds > time) {
+        
+        Console.Write("\nBreathe in ... ");
         for (int x = 5; x >= 0; x--){
-            Console.Write("Breathe in ... " + x);
+             Console.Write(x);
             Thread.Sleep(1000);
-            Console.Clear();
+            Console.Write("\b");
             time += 1;
         }
+
+        Console.Write("\n\nNow breathe out ... "); 
         for (int x = 5; x >= 0; x--){
-            Console.Write("Breathe out ... " + x);
+            Console.Write(x);
             Thread.Sleep(1000);
-            Console.Clear();
+            Console.Write("\b");
             time +=1;
         }
     }
+    Console.WriteLine("\n\nGreat Job!\n");
     }
 }

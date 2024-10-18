@@ -16,9 +16,11 @@ public class ReflectingActivity : Activity {
         DisplayEndingMessage();
     }
     public void Run(int seconds){
+        Console.Clear();
         DisplayPrompt();
         Console.WriteLine("Press Enter once you have thought of something.");
         Console.ReadLine();
+        Console.Clear();
         Console.WriteLine("Now ponder each of the following as they relate to the experience.");
         Console.WriteLine($"We will beging in ... ");
         for (int i = 5; i >= 0; i--)
@@ -34,12 +36,11 @@ public class ReflectingActivity : Activity {
         int time = 0;
         while(seconds > time) {
            DisplayQuestion();
-            for(int i = 0; i <= 10; i++){
-                Thread.Sleep(1000);
-                time += 1;
-                i+=1;
-            }
+           ShowSpinner();
+           time += 5;
+        
         }
+        Console.WriteLine("\n");
     }
     public string GetRandomPrompt(){
         _prompts =
@@ -75,7 +76,7 @@ public class ReflectingActivity : Activity {
     }
     public void DisplayPrompt(){
         string prompt = GetRandomPrompt();
-        Console.WriteLine(prompt + "  DISPLAUPROMT");
+        Console.WriteLine(prompt);
     }
     public void DisplayQuestion(){
         string question = GetRandomQuestion();

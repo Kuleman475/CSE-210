@@ -22,17 +22,30 @@ public class Activity {
         Console.Clear();
         Console.WriteLine($"Welcome to the {_name}");
         Console.WriteLine(_description);
-        // Console.WriteLine("How long would you like your session? ");
-        // string seconds = Console.ReadLine();
-        // int sec = Convert.ToInt32(seconds);
-        // _duration = sec;
-        // GetDuration();    
     }
     public void DisplayEndingMessage(){
         Console.WriteLine($"You have completed {_duration} seconds of {_name}.");
+        ShowSpinner();
+        Console.Clear();
     }
-    public void ShowSpinner(int seconds){
-        _duration = seconds;
+    public void ShowSpinner(){
+        for (int i = 0; i < 5; i++){
+            Console.CursorVisible = false;
+            
+            Console.Write("\\ ");
+            Thread.Sleep(250);
+            Console.Write("\b\b\b"); 
+            Console.Write("| ");
+            Thread.Sleep(250);
+            Console.Write("\b\b\b"); 
+            Console.Write("/ ");
+            Thread.Sleep(250);
+            Console.Write("\b\b\b"); 
+            Console.Write("- "); 
+            Thread.Sleep(250);
+            Console.Write("\b\b\b"); 
+        }
+        Console.CursorVisible = true;
     }
     public void ShowCountdown(int seconds){
         _duration = seconds;

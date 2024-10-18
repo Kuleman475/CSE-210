@@ -10,21 +10,24 @@ public class ListingActivity : Activity {
         int seconds = GetDuration();
         SetDuration(seconds);
         Run(seconds);
+        Console.WriteLine("");
         DisplayEndingMessage();
     }
     public void Run(int seconds){
         _count = 0;
         Console.Clear();
         Console.WriteLine("Welcome to Listing Activity!");
+        Console.WriteLine("");
+        Console.WriteLine("List as many responses as you can to the following prompt");
         GetRandomPrompt();
-        while(seconds > time) {
-            
-
-
+        Console.WriteLine("");
+        ShowSpinner();
+        _count = GetListFromUser(seconds).Count;     
+        Console.WriteLine("Well Done! \n"); 
+        Console.WriteLine($"You listed {_count} items!");
+        ShowSpinner();
         
-        Console.WriteLine($" P{_count}");
-
-        // return _count;
+        
     }
     public string GetRandomPrompt(){
         _prompts =
@@ -38,15 +41,21 @@ public class ListingActivity : Activity {
 
         Random random = new Random();
         int randPrompt = random.Next(_prompts.Count);
+        Console.WriteLine($"--- {_prompts[randPrompt]} ---");
         return _prompts[randPrompt];
     }
-    public List<string> GetListFromUser(){
+    public List<string> GetListFromUser(int seconds){
         List<string> userInput = new List<string>();
-        
+        DateTime startTime = DateTime.Now;
+        DateTime futureTime = startTime.AddSeconds(seconds);
+        DateTime currentTime = DateTime.Now;
+        while (currentTime < futureTime)
+        {
             Console.Write("> ");
             string userList = Console.ReadLine();
             userInput.Add(userList);
-
+            currentTime = DateTime.Now;
+        }
         
         return userInput;
     }

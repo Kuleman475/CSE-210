@@ -4,7 +4,8 @@ class GoalManager {
     private int _score;
 
     public GoalManager(){
-
+        _score = 0;
+        _goals = new List<Goal>();
     }
 
     public void Start(){
@@ -19,20 +20,92 @@ class GoalManager {
     Console.Write("Select a choice from the menu: ");
     string UserChoice = Console.ReadLine();
 
-    Console.WriteLine(UserChoice);  
+    switch(UserChoice){
+        case "1":
+            CreateGoal();
+            break;
+        case "2":
+            // ListGoalNames();
+            // ListGoalDetails();
+            break;
+        case "3":
+            SaveGoals();
+            break;
+        case "4":
+            LoadGoals();
+            break;
+        case "5":
+            RecordEvent();
+            break;
+        case "6":
+            Console.WriteLine("\nGoodbye!");
+            break;
+    }
+
     }
 
     public void DisplayPlayerInfo(){
 // DisplayPlayerInfo - Displays the players current score.
     }
     public void ListGoalNames(){
-// ListGoalNames - Lists the names of each of the goals.
+        foreach(Goal goal in _goals){
+            goal.GetStringRepresetation();
+        }
+        if(_goals.Count == 0){
+            Console.WriteLine("No goals.");
+        }
     }
-    public void ListGoalDetails(){
-// ListGoalDetails - Lists the details of each goal (including the checkbox of whether it is complete).
-    }
+//     public void ListGoalDetails(){
+// // ListGoalDetails - Lists the details of each goal (including the checkbox of whether it is complete).
+//     }
     public void CreateGoal(){
 // CreateGoal - Asks the user for the information about a new goal. Then, creates the goal and adds it to the list.
+        Console.WriteLine("Which Goal would you like to create: ");
+        Console.WriteLine("    1. Simple goal");
+        Console.WriteLine("    2. Eternal goal");
+        Console.WriteLine("    3. Checklist goal");
+        string goalInput = Console.ReadLine();
+
+        switch(goalInput){
+            case "1":
+                Console.WriteLine("What is the name of the goal? ");
+                string name = Console.ReadLine();
+                Console.WriteLine("What is the short description of the goal? ");
+                string description = Console.ReadLine();
+                Console.WriteLine("How many points do you want with this goal? ");
+                int points = Convert.ToInt32(Console.ReadLine());
+                SimpleGoal simp = new SimpleGoal(name, description, points, false);
+                _goals.Add(simp);
+                Console.WriteLine("added simp");
+                break;
+            case "2":
+                Console.WriteLine("What is the name of the goal? ");
+                string Ename = Console.ReadLine();
+                Console.WriteLine("What is the short description of the goal? ");
+                string Edescription = Console.ReadLine();
+                Console.WriteLine("How many points do you want with this goal? ");
+                int Epoints = Convert.ToInt32(Console.ReadLine());
+                EternalGoal eternal = new EternalGoal(Ename, Edescription, Epoints);
+                _goals.Add(eternal);
+                Console.WriteLine("added eternal");
+                break;
+            case "3":
+                Console.WriteLine("What is the name of the goal? ");
+                string Cname = Console.ReadLine();
+                Console.WriteLine("What is the short description of the goal? ");
+                string Cdescription = Console.ReadLine();
+                Console.WriteLine("How many points do you want with this goal? ");
+                int Cpoints = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("How many times do you want to achieve this goal? ");
+                int target = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("How many points do you want as a bonus? ");
+                int bonus = Convert.ToInt32(Console.ReadLine());
+                ChecklistGoal check = new ChecklistGoal(Cname, Cdescription, Cpoints, target, bonus);
+                _goals.Add(check);
+                Console.WriteLine("added checklist");
+                break;
+        }
+        Start();
     }
     public void RecordEvent(){
 // RecordEvent - Asks the user which goal they have done and then records the event by calling the RecordEvent method on that goal.

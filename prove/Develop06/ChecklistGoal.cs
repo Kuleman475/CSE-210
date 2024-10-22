@@ -4,9 +4,13 @@ class ChecklistGoal : Goal {
     private int _target;
     private int _bonus;
 
-    public ChecklistGoal(string name, string description, string points, int target, int bonus)
+    public ChecklistGoal(string name, string description, int points, int target, int bonus)
     : base(name, description, points){
+        _amountCompleted = 1;
+        _target = target;
+        _bonus = bonus;
 
+        Console.WriteLine(_amountCompleted + _bonus + _target);
     }
 
     // public override void RecordEvent(){

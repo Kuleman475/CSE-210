@@ -7,8 +7,6 @@ class Goal {
         _shortName = name;
         _description = description;
         _points = points;
-
-        Console.WriteLine($"{_shortName}\n{_description}\n{_points}");
     }
 
     public string GetName()
@@ -24,23 +22,16 @@ class Goal {
         return _points;
     }
 
+    public virtual void RecordEvent(){
 
-    // public string getGoalName(){
-    //     Console.WriteLine(_shortName);
-    //     return _shortName;
-    // // }
-    // public virtual void RecordEvent(){
-
-    // }
-    // public virtual bool IsComplete(){
-
-    // }
+    }
+    public virtual bool IsComplete(){
+        return false;
+    }
     // public string GetDetailsString(){
 
     // }
     public virtual string GetStringRepresetation(){
-        Console.WriteLine($"{_shortName} : {_description}" +
-        $"points {_points}");
         return $"{_shortName} : {_description}" +
         $"points {_points}";
     }

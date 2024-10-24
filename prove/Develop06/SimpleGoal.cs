@@ -6,15 +6,23 @@ class SimpleGoal : Goal {
         _isComplete = complete;
     }
     
-    // public override void RecordEvent(){
+    public override void RecordEvent(){
 
-    // }
-    // public override bool IsComplete(){
-
-    // }
+    }
+    public override bool IsComplete(){
+        _isComplete = true;
+        return true;
+    }
+    public string CheckComplete(){
+        if (_isComplete == true){
+            return "X";
+        }
+        else{
+            return " ";
+        }
+    }
     public override string GetStringRepresetation(){
-        Console.WriteLine($"{GetName()} {GetDescription()}");
-        Console.WriteLine();
-        return "POPOOPOPO";
+        Console.WriteLine($"[{CheckComplete()}] {GetName()} - ({GetDescription()})");
+        return $"[{CheckComplete()}] {GetName()} - ({GetDescription()})";
     }
 }

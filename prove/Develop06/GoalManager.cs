@@ -10,6 +10,7 @@ class GoalManager {
 
     public void Start(){
 // Start - This is the "main" function for this class. It is called by Program.cs, and then runs the menu loop.
+    Console.WriteLine($"Your have {_score} points\n");
     Console.WriteLine("Menu Options: ");
     Console.WriteLine("    1. Create New Goal");
     Console.WriteLine("    2. List Goals");
@@ -25,8 +26,7 @@ class GoalManager {
             CreateGoal();
             break;
         case "2":
-            // ListGoalNames();
-            // ListGoalDetails();
+            ListGoalDetails();
             break;
         case "3":
             SaveGoals();
@@ -48,16 +48,31 @@ class GoalManager {
 // DisplayPlayerInfo - Displays the players current score.
     }
     public void ListGoalNames(){
+        int goalNum = 1;
         foreach(Goal goal in _goals){
+            Console.Write(goalNum + ". ");
             goal.GetStringRepresetation();
+            goalNum += 1;
         }
         if(_goals.Count == 0){
             Console.WriteLine("No goals.");
         }
     }
-//     public void ListGoalDetails(){
-// // ListGoalDetails - Lists the details of each goal (including the checkbox of whether it is complete).
-//     }
+    public void ListGoalDetails(){
+// ListGoalDetails - Lists the details of each goal (including the checkbox of whether it is complete).
+        int goalNum = 1;
+        foreach(Goal goal in _goals){
+            Console.Write($"{goalNum}. ");
+            goal.GetStringRepresetation();
+            goalNum += 1;
+        }
+        if(_goals.Count == 0){
+            Console.WriteLine("No goals.");
+        }
+        Console.WriteLine("Press Enter key to continue: ");
+        Console.ReadLine();
+        Start();
+    }
     public void CreateGoal(){
 // CreateGoal - Asks the user for the information about a new goal. Then, creates the goal and adds it to the list.
         Console.WriteLine("Which Goal would you like to create: ");
@@ -76,7 +91,6 @@ class GoalManager {
                 int points = Convert.ToInt32(Console.ReadLine());
                 SimpleGoal simp = new SimpleGoal(name, description, points, false);
                 _goals.Add(simp);
-                Console.WriteLine("added simp");
                 break;
             case "2":
                 Console.WriteLine("What is the name of the goal? ");
@@ -87,7 +101,6 @@ class GoalManager {
                 int Epoints = Convert.ToInt32(Console.ReadLine());
                 EternalGoal eternal = new EternalGoal(Ename, Edescription, Epoints);
                 _goals.Add(eternal);
-                Console.WriteLine("added eternal");
                 break;
             case "3":
                 Console.WriteLine("What is the name of the goal? ");
@@ -102,16 +115,25 @@ class GoalManager {
                 int bonus = Convert.ToInt32(Console.ReadLine());
                 ChecklistGoal check = new ChecklistGoal(Cname, Cdescription, Cpoints, target, bonus);
                 _goals.Add(check);
-                Console.WriteLine("added checklist");
                 break;
         }
         Start();
     }
     public void RecordEvent(){
 // RecordEvent - Asks the user which goal they have done and then records the event by calling the RecordEvent method on that goal.
+        ListGoalNames();
+        Console.WriteLine("Which goal would you like to record? ");
+        int userRecord = Convert.ToInt32(Console.ReadLine());
+        int Rpoints = _goals[userRecord - 1].GetPoints();
+        _score += Rpoints;
+        _goals[userRecord - 1].IsComplete();
+        _goals[userRecord - 1].RecordEvent();
+
+        Start();
     }
     public void SaveGoals(){
-// SaveGoals - Saves the list of goals to a file.      
+// SaveGoals - Saves the list of goals to a file. 
+         
     }
     public void LoadGoals(){
 // LoadGoals - Loads the list of goals from a file.

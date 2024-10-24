@@ -5,13 +5,15 @@ class EternalGoal : Goal {
 
     }
 
-    // public override void RecordEvent(){
+    public override void RecordEvent(){
 
-    // }
-    // public override bool IsComplete(){
-
-    // }
-    // public override string GetStringRepresetation(){
-
-    // }
+    }
+    public override bool IsComplete(){
+        return false;
+    }
+    public override string GetStringRepresetation()
+    {
+        Console.WriteLine($"[ ] {GetName()} - ({GetDescription()})");
+        return $"[ ] {GetName()} - ({GetDescription()})";
+    }
 }

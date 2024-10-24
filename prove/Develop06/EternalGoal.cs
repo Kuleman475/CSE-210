@@ -14,6 +14,6 @@ class EternalGoal : Goal {
     public override string GetStringRepresetation()
     {
         Console.WriteLine($"[ ] {GetName()} - ({GetDescription()})");
-        return $"[ ] {GetName()} - ({GetDescription()})";
+        return $"EternalGoal::[ ]::{GetName()}::{GetDescription()}::{GetPoints()}";
     }
 }

@@ -23,6 +23,6 @@ class SimpleGoal : Goal {
     }
     public override string GetStringRepresetation(){
         Console.WriteLine($"[{CheckComplete()}] {GetName()} - ({GetDescription()})");
-        return $"[{CheckComplete()}] {GetName()} - ({GetDescription()})";
+        return $"SimpleGoal::[{CheckComplete()}]::{GetName()}::{GetDescription()}::{GetPoints()}";
     }
 }

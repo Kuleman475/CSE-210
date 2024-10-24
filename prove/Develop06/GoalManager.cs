@@ -117,7 +117,7 @@ class GoalManager {
                 int target = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine("How many points do you want as a bonus? ");
                 int bonus = Convert.ToInt32(Console.ReadLine());
-                ChecklistGoal check = new ChecklistGoal(Cname, Cdescription, Cpoints, target, bonus);
+                ChecklistGoal check = new ChecklistGoal(Cname, Cdescription, Cpoints, 0, target, bonus);
                 _goals.Add(check);
                 break;
         }
@@ -165,18 +165,33 @@ class GoalManager {
     {
     string[] parts = line.Split("::");
     Console.WriteLine(line);
-    // List<Entry> entrie = new List<Entry>();
-    // string _date = parts[0];
-    // string _entryText = parts[1];
-    // string _promptText = parts[2];
-    // Console.WriteLine($"{_date}, {_entryText}, {_promptText}");
-    // entry._date = _date;
-    // entry._entryText = _entryText;
-    // entry._promptText = _promptText;
-    // _entries.Add(entry);
+    // string title = parts[0];
+    // string skip = parts[1];
+    // string name = parts[2];
+    // string description = parts[3];
+    // int points = Int32.Parse(parts[4]);
+    // if(title == "SimpleGoal"){
+    //     bool complete = Convert.ToBoolean(parts[5]);
+    //     SimpleGoal simple = new SimpleGoal(name, description, points, complete);
+    //     _goals.Add(simple);
+    // }
+    // else if(title == "EternalGoal"){
+    //     EternalGoal eternal = new EternalGoal(name, description, points);
+    //     _goals.Add(eternal);
+    // }
+    // else if(title == "ChecklistGoal") {
+    //     int amountCompleted = Int32.Parse(parts[5]);
+    //     int target = Int32.Parse(parts[6]);
+    //     int bonus = Int32.Parse(parts[7]);
+    //     ChecklistGoal check = new ChecklistGoal(name, description, points, amountCompleted, target, bonus);
+    //     _goals.Add(check);
+    // }
+    // }
+    // }
+    // }
+    // Start();
     }
     }
     }
-    Start();
     }
 }

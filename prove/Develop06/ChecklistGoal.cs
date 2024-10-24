@@ -30,6 +30,6 @@ class ChecklistGoal : Goal {
     }
     public override string GetStringRepresetation(){
         Console.WriteLine($"[{GetDetailsString()}] {GetName()} - ({GetDescription()}) -- {_amountCompleted}/{_target}");
-        return $"[{GetDetailsString()}] {GetName()} - ({GetDescription()}) -- {_amountCompleted}/{_target}";
+        return $"[{GetDetailsString()}]::{GetName()}::({GetDescription()}::{_amountCompleted}::{_target}";
     }
 }

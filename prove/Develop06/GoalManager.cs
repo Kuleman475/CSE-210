@@ -1,3 +1,7 @@
+using System.ComponentModel;
+using System.IO;
+using static System.IO.StreamWriter;
+
 class GoalManager {
 
     private List<Goal> _goals;
@@ -133,9 +137,46 @@ class GoalManager {
     }
     public void SaveGoals(){
 // SaveGoals - Saves the list of goals to a file. 
-         
+    Console.Write("Enter Filename: ");
+    string userFile = Console.ReadLine();
+    //PC 
+    // string fileName = $"C:\\Users\\chris\\OneDrive\\Desktop\\BYU-Idaho Classes\\CSE 210\\CSE-210\\prove\\Develop06\\{userFile}";
+    //Laptop
+    // string fileName = @"C:\\Users\\Taylor\\Desktop\\BYU-IDAHO classes\\CSE 210 (Programming with classes)\\CSE-210\\prove\\Develop06";
+        using (StreamWriter outputFile = new StreamWriter(userFile))
+    {
+    // You can add text to the file with the WriteLine method
+    foreach (Goal goal in _goals) {
+            outputFile.WriteLine(_score);
+            outputFile.WriteLine(goal.GetStringRepresetation());
+        }     
+    }
     }
     public void LoadGoals(){
 // LoadGoals - Loads the list of goals from a file.
+ Console.Write("Enter Filename: ");
+    string userFile = Console.ReadLine();
+    if (File.Exists(userFile)){
+    using (StreamReader outputFile = new StreamReader(userFile))
+    {
+    // You can add text to the file with the WriteLine method
+    string[] lines = System.IO.File.ReadAllLines(userFile);
+    foreach (string line in lines)
+    {
+    string[] parts = line.Split("::");
+    Console.WriteLine(line);
+    // List<Entry> entrie = new List<Entry>();
+    // string _date = parts[0];
+    // string _entryText = parts[1];
+    // string _promptText = parts[2];
+    // Console.WriteLine($"{_date}, {_entryText}, {_promptText}");
+    // entry._date = _date;
+    // entry._entryText = _entryText;
+    // entry._promptText = _promptText;
+    // _entries.Add(entry);
+    }
+    }
+    }
+    Start();
     }
 }

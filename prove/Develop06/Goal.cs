@@ -21,6 +21,9 @@ class Goal {
     {
         return _points;
     }
+    public virtual int GetBonus(){
+        return 0;
+    }
 
     public virtual void RecordEvent(){
 

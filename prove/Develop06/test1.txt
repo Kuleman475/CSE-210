@@ -1,0 +1,4 @@
+243
+SimpleGoal|[X]|test|check and test if al goals work|3|True
+EternalGoal|[ ]|read|read daily|50
+ChecklistGoal|[ ]|checklist|today is going to work|45|2|3|669

@@ -132,6 +132,11 @@ class GoalManager {
         _score += Rpoints;
         _goals[userRecord - 1].IsComplete();
         _goals[userRecord - 1].RecordEvent();
+        int bonus = _goals[userRecord - 1].GetBonus();
+        _score += bonus;
+
+        Console.WriteLine($"You have earned {Rpoints + bonus} points!");
+
 
         Start();
     }
@@ -140,58 +145,67 @@ class GoalManager {
     Console.Write("Enter Filename: ");
     string userFile = Console.ReadLine();
     //PC 
-    // string fileName = $"C:\\Users\\chris\\OneDrive\\Desktop\\BYU-Idaho Classes\\CSE 210\\CSE-210\\prove\\Develop06\\{userFile}";
-    //Laptop
-    // string fileName = @"C:\\Users\\Taylor\\Desktop\\BYU-IDAHO classes\\CSE 210 (Programming with classes)\\CSE-210\\prove\\Develop06";
-        using (StreamWriter outputFile = new StreamWriter(userFile))
+    string fileName = $"C:\\Users\\chris\\OneDrive\\Desktop\\BYU-Idaho Classes\\CSE 210\\CSE-210\\prove\\Develop06\\{userFile}";
+        using (StreamWriter outputFile = new StreamWriter(fileName))
     {
     // You can add text to the file with the WriteLine method
+    outputFile.WriteLine(_score);
     foreach (Goal goal in _goals) {
-            outputFile.WriteLine(_score);
+            
             outputFile.WriteLine(goal.GetStringRepresetation());
         }     
     }
+        Start();
     }
     public void LoadGoals(){
-// LoadGoals - Loads the list of goals from a file.
- Console.Write("Enter Filename: ");
-    string userFile = Console.ReadLine();
-    if (File.Exists(userFile)){
-    using (StreamReader outputFile = new StreamReader(userFile))
-    {
-    // You can add text to the file with the WriteLine method
-    string[] lines = System.IO.File.ReadAllLines(userFile);
-    foreach (string line in lines)
-    {
-    string[] parts = line.Split("::");
-    Console.WriteLine(line);
-    // string title = parts[0];
-    // string skip = parts[1];
-    // string name = parts[2];
-    // string description = parts[3];
-    // int points = Int32.Parse(parts[4]);
-    // if(title == "SimpleGoal"){
-    //     bool complete = Convert.ToBoolean(parts[5]);
-    //     SimpleGoal simple = new SimpleGoal(name, description, points, complete);
-    //     _goals.Add(simple);
-    // }
-    // else if(title == "EternalGoal"){
-    //     EternalGoal eternal = new EternalGoal(name, description, points);
-    //     _goals.Add(eternal);
-    // }
-    // else if(title == "ChecklistGoal") {
-    //     int amountCompleted = Int32.Parse(parts[5]);
-    //     int target = Int32.Parse(parts[6]);
-    //     int bonus = Int32.Parse(parts[7]);
-    //     ChecklistGoal check = new ChecklistGoal(name, description, points, amountCompleted, target, bonus);
-    //     _goals.Add(check);
-    // }
-    // }
-    // }
-    // }
-    // Start();
+        
+        Console.Write("Enter Filename: ");
+        string userFile = Console.ReadLine();
+        string filename = $"C:\\Users\\chris\\OneDrive\\Desktop\\BYU-Idaho Classes\\CSE 210\\CSE-210\\prove\\Develop06\\{userFile}";
+        string[] lines;
+        lines = System.IO.File.ReadAllLines(filename);
+
+
+        
+        int numb = 0;
+        foreach (string line in lines)
+        {
+
+            if (numb == 0){
+                _score = Int32.Parse(lines[0]);
+            }
+            else{
+                string[] parts = line.Split("|");
+            
+                string title = parts[0];
+                string skip = parts[1];
+                string name = parts[2];
+                string description = parts[3];
+                int points = Int32.Parse(parts[4]);
+
+                if(title == "SimpleGoal"){
+                    bool complete = Convert.ToBoolean(parts[5]);
+                    SimpleGoal simple = new SimpleGoal(name, description, points, complete);
+                    _goals.Add(simple);
+                }
+                else if(title == "EternalGoal"){
+                    EternalGoal eternal = new EternalGoal(name, description, points);
+                    _goals.Add(eternal);
+                }
+                else if(title == "ChecklistGoal") {
+                    int amountCompleted = Int32.Parse(parts[5]);
+                    int target = Int32.Parse(parts[6]);
+                    int bonus = Int32.Parse(parts[7]);
+                    ChecklistGoal check = new ChecklistGoal(name, description, points, amountCompleted, target, bonus);
+                    _goals.Add(check);
+                }
+            }
+            numb += 1;
+    }
+        Start();
     }
     }
-    }
-    }
-}
+
+//     }
+//     }
+// }

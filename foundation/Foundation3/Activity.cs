@@ -1,9 +1,7 @@
 class Activity {
     private string _date;
     private int _minutes;
-
     // private List<string> _acivityList;
-    
 
     public Activity(int minutes, string date){
         _minutes = minutes;
